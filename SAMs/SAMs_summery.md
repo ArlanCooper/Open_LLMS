@@ -69,6 +69,35 @@ Prompt-Segment-Anything:集成检测模型，先用检测模型得到label和box
 ![img](pic/1.4_3.webp)
 
 
+### 1.5 遥感影像
+[segment-anything-eo](https://github.com/aliaksandr960/segment-anything-eo)
+提取要素边界，对于大图做滑窗处理。在遥感应用还应该更多拓展。
+![img](pic/1.5_1.jpg)
+
+[samrs](https://github.com/vitae-transformer/samrs)
+利用sam在现有遥感数据集上生成了一个更到的遥感数据集。目前代码暂时还未更新。
+![img](pic/1.5_2.webp)
+
+[RSPrompter](https://kyanchen.github.io/RSPrompter/)
+遥感图像实例分割利器，基于SAM实现自动分割。基于 SAM 基础模型设计一种自动化实例分割方法，该方法也加入了类别信息，用于遥感图像。受提示学习启发，本文通过学习生成合适的提示来作为 SAM 的输入。这使得 SAM 能够为遥感图像生成语义可辨别的分割结果，该方法称之为 RSPrompter。
+![img](pic/1.5_3.webp)
+
+### 1.6 one-shot提取特定目标
+[Personalize-SAM](https://github.com/ZrrSkywalker/Personalize-SAM)
+仅给定一张带有参考mask的图像，PerSAM 无需任何训练即可在其他图像或视频中分割特定的目标，例如您的宠物狗。也提供了微调，但是只训练了2个参数。
+```python
+class Mask_Weights(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.weights = nn.Parameter(torch.ones(2, 1, requires_grad=True) / 3)
+```
+![img](pic/1.6_1.webp)
+
+[matcher](https://github.com/aim-uofa/matcher)
+通过参考图像，生成可靠的prompt，控制mask的生成。
+
+
+
 
 
 
